@@ -1,0 +1,451 @@
+﻿body{
+			height:100%;
+			width:100%;
+		}
+::-webkit-scrollbar{
+	display:none;   /*隐藏页面滚动条*/
+}
+#nav{
+			height:120px;
+			width:100%;
+			background: white;
+		}
+#nav-tabs{
+			display:flex;
+			display: -webkit-flex; /* Safari */
+			flex-wrap:nowrap;
+		}
+#nav-tabs li{
+			display:flex;
+			display: -webkit-flex; /* Safari */
+			flex-grow:1;
+		}
+#nav-tabs li a{
+			line-height:100px;
+			justify-content: center;
+			margin: 0 auto;
+			font-family: Tahoma,Microsoft YaHei;
+			font-size:1.5em;
+			color:#969696;
+		}
+#nav-tabs li a:hover{
+			color:#f19015;
+			font-weight:600;
+			border-bottom:2px solid #f19015;
+		}
+#slidenav{
+			position:fixed;
+			left:2%;
+			top:50%;
+			width:100px;
+			font-family: Helvetica,STHeiti,'Droid Sans Fallback';
+}
+#slinav li{
+			display:list-item;
+			height:40px;
+			position:relative;
+			white-space: nowrap;
+}
+@-webkit-keyframes switchLar
+{
+	from{border:2px solid rgb(255,255,255);background-color: #030303;}
+	to{border:2px solid #030303;background-color: rgb(255,255,255);}
+}
+@-webkit-keyframes switchNar
+{
+	from{border:2px solid #030303;background-color: rgb(255,255,255);}
+	to{border:2px solid rgb(255,255,255);background-color: #030303;}
+}
+@-webkit-keyframes fadeIn{
+	from{opacity:0;left:5px;}
+	to{opacity:1;left:10px;}
+}
+.nav-game{
+			width:10px;
+			height:10px;
+			border-radius:20px;
+			display:inline-block;
+			position:relative;
+			top:12px;
+			border:2px solid #030303;
+			background-color: rgb(255,255,255);
+			animation:switchLar 2s;
+			-webkit-animation:switchLar 2s; /*Safari and Chrome*/
+}
+.nav-gam{
+			width:10px;
+			height:10px;
+			border-radius:20px;
+			display:inline-block;
+			position:relative;
+			top:12px;
+			border:2px solid rgb(255,255,255);
+			background-color: #030303;
+			animation:switchNar 2s;
+			-webkit-animation:switchNar 2s; /*Safari and Chrome*/
+}
+.slidenavText{
+			position:relative;
+			top:10px;
+			left:10px;
+			color:#969696;
+			opacity: 0;
+		}
+.slidenavText_L{
+			position:relative;
+			top:10px;
+			left:10px;
+			color:#080808;
+		}
+/*hover slidenav的div，让span淡出.+表示下一级元素，>表示子元素*/
+#slidenav:hover > ul > li > a > .slidenavText{
+			animation:fadeIn 2s;
+			-webkit-animation:fadeIn 2s;/*Safari and Chrome*/
+			opacity:1;
+			left:10px;
+		}	
+.chapter{
+			display:block;
+			height:100%;
+			width:100%;
+}
+#copyright{
+			position:fixed;
+			bottom:0px;
+			display:block;
+			width:100%;
+			height:30px;
+			background:#000;
+			color:#fff;
+			text-align:center;
+			font-size:0.8em;
+			padding-top:10px;
+		}
+#photo{
+			max-width:200px;
+			position:absolute;
+			left:44%;
+			top:30%;
+		} /*通过绝对定位将照片页面居中，通过调整max-width属性让照片等比例缩小*/
+#tyj_name{max-width:60px;position:absolute;left:47%;top:60%;}
+/*@media screen and (max-width:1280px){body{background-color:yellow;}}
+@media screen and (max-width: 768px){body{background-color:green;}}
+@media screen and (max-width: 550px){body{background-color:blue;}}*/
+#slogan{position:relative;left:40%;top:30px;}
+
+/*以下是per_intro页面的css*/
+#content{width:100%;height: 300px;position:absolute;bottom:60px;}
+#tab-bar{width:100%;height:100px;background:black;overflow: hidden;}
+#tab-bar ul{width:100%;height:100px;display:flex;flex-flow:row nowrap;justify-content:space-between;}
+#tab-bar li{padding-top:25px;}
+#tab-bar li p{display:inline-block;}
+.tab_css {  
+	    width: 100%;  
+        height: 200px;  
+        background-color:#ffffff;  
+        display: none;  
+        float: left;  
+    }
+.tabx{
+	font-family: Tahoma,Microsoft YaHei;
+	font-size:1.4em;
+	background:black;
+	color:grey;
+	width:100%;
+	text-align:center;
+	border-radius:15px 15px 0px 0px;
+	cursor:pointer;
+	flex:auto;  
+	/*flex:[ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]*   auto == (1 1 auto)/*/
+	}
+#tab1_content{
+	width:1000px;
+	background:white;
+	padding-top:20px;
+	display:flex;
+	flex-flow:row nowrap;
+	justify-content:space-between;
+	flex:auto;
+	position:absolute;
+	left:50%;
+	transform:translate(-50%)
+	}
+.tab1_son{
+	border-right:2px solid #A0A0A0;
+		}
+
+/*以下是tab2_content的css*/
+#tab2_content_son{
+	display: table;
+	width:100%;
+	table-layout: fixed;
+}
+.tab2_content_grandson{
+	height: 200px;
+	display:table-cell;
+}
+
+
+/*以下是tab3_content第三个页签的CSS*/
+.line_time{
+	color:white;
+	font-size:1.3em;
+	display:inline-block;
+	float:left;
+	height:30px;
+	line-height:30px;
+	width:120px;
+	text-align:center;
+	position:absolute;
+	}
+.line-con{
+	display:inline-block;
+	float:left;
+	border:1px transparent solid;
+	color:transparent;
+	text-indent:2em;
+	padding:2px;
+	max-width:180px;
+	max-height:60px;
+	overflow:hidden;
+/*	多行文本框省略号效果*/	
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;
+	position:absolute;
+}
+.inverted_triangle{
+	width:0px;
+	height:0px;
+	border-left:10px solid transparent;
+	border-right:10px solid transparent;
+	position:absolute;
+}
+.triangle{
+	width:0px;
+	height:0px;
+	border-left:10px solid transparent;
+	border-right:10px solid transparent;
+	position:absolute;
+}
+
+/*tab3_content第三页签上部分动画上浮效果*/
+@-webkit-keyframes mtutimecon
+{
+from{bottom:-26px;}
+to{bottom:26px;}
+}
+@-webkit-keyframes mtutimechangecolor
+{
+from{background:transparent;}
+to{background:#2ED8AD;}
+}
+@-webkit-keyframes mtuconchangecolor
+{
+from{border:1px transparent solid;color:transparent;}
+to{border:1px #E1E1E1 solid;color:black;}
+}
+@-webkit-keyframes mtutriangle
+{
+from{bottom:-20px;}
+to{bottom:14px;}
+}
+@-webkit-keyframes mtutrianglechangecolor
+{
+from{border-top:12px solid transparent;}
+to{border-top:12px solid #2ED8AD;}
+}
+@-webkit-keyframes mtutrianglechangecolorgrey
+{
+from{border-top:12px solid transparent;}
+to{border-top:12px solid #E1E1E1;}
+}
+#mtu1{
+	-webkit-animation:mtutimecon 2s 0.8s forwards,mtutimechangecolor 2s 0.8s forwards;
+}
+#mtu4{
+	-webkit-animation:mtutriangle 2s 0.8s forwards,mtutrianglechangecolor 2s 0.8s forwards;
+}
+#mtu2{
+	-webkit-animation:mtutimecon 2s 1.8s forwards,mtuconchangecolor 2s 1.8s forwards;
+}
+#mtu5{
+	-webkit-animation:mtutriangle 2s 1.8s forwards,mtutrianglechangecolorgrey 2s 1.8s forwards;;
+}
+#mtu3{
+	-webkit-animation:mtutimecon 2s 2.8s forwards,mtutimechangecolor 2s 2.8s forwards;
+}
+#mtu6{
+	-webkit-animation:mtutriangle 2s 2.8s forwards,mtutrianglechangecolor 2s 2.8s forwards;
+}
+
+/*tab3_content第三页签下部分动画下浮效果*/
+@-webkit-keyframes mtdtriangle
+{
+from{top:-16px;}
+to{top:8px;}
+}
+@-webkit-keyframes mtdtrianglechangecolor
+{
+from{border-bottom:12px transparent solid;}
+to{border-bottom:12px #2ED8AD solid;}
+}
+@-webkit-keyframes mtdtimecon
+{
+from{top:-20px;}
+to{top:20px;}
+}
+@-webkit-keyframes mtdtimechangecolor
+{
+from{background:transparent;}
+to{background:#2ED8AD;}
+}
+@-webkit-keyframes mtdconchangecolor
+{
+from{border:1px transparent solid;color:transparent;}
+to{border:1px #E1E1E1 solid;color:black;}
+}
+
+@-webkit-keyframes mtdtrianglechangecolorgrey
+{
+from{border-bottom:12px solid transparent;}
+to{border-bottom:12px solid #E1E1E1;}
+}
+#mtd1{
+	-webkit-animation:mtdtriangle 2s 0.8s forwards,mtdtrianglechangecolorgrey 2s 0.8s forwards;
+}
+#mtd4{
+	-webkit-animation:mtdtimecon 2s 0.8s forwards,mtdconchangecolor 2s 0.8s forwards;
+}
+#mtd2{
+	-webkit-animation:mtdtriangle 2s 1.8s forwards,mtdtrianglechangecolor 2s 1.8s forwards;
+}
+#mtd5{
+	-webkit-animation:mtdtimecon 2s 1.8s forwards,mtdtimechangecolor 2s 1.8s forwards;;
+}
+#mtd3{
+	-webkit-animation:mtdtriangle 2s 2.8s forwards,mtdtrianglechangecolorgrey 2s 2.8s forwards;
+}
+#mtd6{
+	-webkit-animation:mtdtimecon 2s 2.8s forwards,mtdconchangecolor 2s 2.8s forwards;
+}
+
+/*tab3_content第三页签中间部分动画效果*/
+#tab3_content_middle{
+	padding-top:8px;
+	height:20px;
+	width:1000px;
+	margin:auto;
+}
+#hor_line{
+	width:800px;
+	height:5px;
+	left:90px;
+	background:#2ED8AD;
+	position:relative;
+	animation-name:yanshen;
+	animation-duration:4s;
+/* Safari and Chrome */
+	-webkit-animation-name:yanshen;
+	-webkit-animation-duration:4s;
+}
+@-webkit-keyframes yanshen
+{
+0%{left:90px;width:0;height:5px;}
+25%{left:90px;width:200px;height:5px;}
+50%{left:90px;width:400px;height:5px;}
+75%{left:90px;width:600px;height:5px;}
+100%{left:90px;width:800px;height:5px;}
+}
+
+
+@-webkit-keyframes shensuo
+{
+from{width:6px;height:6px;border-radius:3px;}
+to{width:12px;height:12px;border-radius:6px;}
+}
+
+@-webkit-keyframes weiyi200
+{
+from{left:90px;}
+to{left:200px;}
+}
+
+@-webkit-keyframes weiyi400
+{
+from{left:90px;}
+to{left:400px;}
+}
+
+@-webkit-keyframes weiyi600
+{
+from{left:90px;}
+to{left:600px;}
+}
+@-webkit-keyframes weiyi800
+{
+from{left:90px;}
+to{left:793px;}
+}
+.sp{
+	width:10px;
+	height:10px;
+	border-radius:5px; 
+	background: #2ED8AD;
+	/*通过绝对定位，让圆点在父元素横线上垂直居中*/
+	position:absolute;
+	top:50%;
+	transform: translateY(-50%);
+}
+#sp0{
+	/* Safari and Chrome */
+	-webkit-animation:shensuo 0.8s 10 alternate;
+}
+#sp1{
+	/* Safari and Chrome */
+/*	-webkit-animation-name:shensuo;
+	-webkit-animation-duration:0.8s;
+	-webkit-animation-iteration-count:6;
+	-webkit-animation-direction:alternate;*/
+	-webkit-animation:shensuo 0.8s 8 alternate,weiyi200 2s forwards;
+}
+#sp2{
+	/* Safari and Chrome */
+	-webkit-animation:shensuo 0.8s 8 alternate,weiyi400 1.3s 1s forwards;
+}
+#sp3{
+	/* Safari and Chrome */
+	-webkit-animation:shensuo 0.8s 8 alternate,weiyi600 1.3s 2s forwards;
+}
+#sp4{
+	/* Safari and Chrome */
+	-webkit-animation:shensuo 0.8s 8 alternate,weiyi800 1.3s 3s forwards;
+}
+
+
+/*个人档案页签的css*/
+#per_doc table tr td{height:30px;width:60px;font-family:Tahoma,Microsoft YaHei;font-size:1.3em;color:#A0A0A0;}
+#per_pre table tr td{height:30px;width:60px;font-family:Tahoma,Microsoft YaHei;font-size:1.3em;color:#A0A0A0;}
+.tab1_son{flex:auto;}
+
+
+/*联系我页面的css*/
+#cont_me{
+	height:260px;
+	width:100%;
+	background:#ffffff;
+	position:absolute;
+	bottom:30px;
+}
+#up{	margin:auto;
+		width:800px;
+        display:flex;
+        justify-content:center;  /*弹性布局中的水平居中*/
+        align-items:center;      /*弹性布局中的垂直居中*/
+    }
+#down{width:800px;margin:auto;display: flex;flex:auto;justify-content:space-around;align-items:center;}
+#cont{max-width:100px;}
+#up img{margin:5px;}
+#down_left img{max-width:160px;}
+.cont_form{width:200px;height:30px;background:#EEEEEE;margin:3px;line-height:36px;border-radius:3px;}
+.cont_form input{background:#EEEEEE;font-family:Tahoma,Microsoft YaHei;font-size:1em;border:0;text-indent:0px;text-decoration:none;}/*通过border：0 设置input无边框效果*/
