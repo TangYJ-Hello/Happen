@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test_page</title>
+	<script src="jquery-3.3.1.min.js"></script>
+	<style>
+	#mask{width:100%;height:100%;background-color:red;opacity:0.7;filter:alpha(opacity=70);z-index: 1000;position:absolute;right:0;top:0; }
+	#close{background:orange;width:30px;height:30px;cursor:pointer;position:absolute;right:5px;left:5px;text-indent:-999em;}
+	#login{position:fixed;z-index:1001;}
+	#llliii{display:none;}
+/*#abc
+{
+width:100px;
+height:100px;
+background:black;
+border-radius:50px;
+position:relative;
+animation-name:mymove;
+animation-duration:3s;
+animation-iteration-count:infinite;
+/* Safari and Chrome */
+/*-webkit-animation-name:mymove;
+-webkit-animation-duration:3s;
+-webkit-animation-iteration-count:infinite;
+}*/
+
+	</style>
+<script type="text/javascript">
+	//定义了一个命名空间
+	var NameSpace = window.NameSpace || {};
+	// 命名空间中定义了一个构造函数对象
+	NameSpace.Hello = function(){
+		this.name = 'world';
+	};
+	// 在函数对象原型中定义方法
+	NameSpace.Hello.prototype.sayHello = function(_name){
+		return 'hello ' + (_name||this.name);
+	};
+	// 通过构造函数创建新的对象
+	var hello = new NameSpace.Hello();
+	console.log(hello.sayHello("kitty"));
+	
+	//实例：在函数体内通过直接定义变量aa，会污染全局同名变量
+	// var aa = 300;
+	// (function aaa(){
+	// 	aa = 400;
+	// }())
+	// function bbb(){
+	// 	console.log(aa);
+	// }
+	// bbb();
+
+
+</script>
+</head>
+
+
+<body style="height:630px;" onload="load()">
+<!-- <button id="btnLogin"class="login-btn" onclick="dialog();">登录</button>
+<div id="mask"></div>
+<div id="login">
+	<div id="close">点击关闭</div>
+	我是登录框
+</div> -->
+
+<div id="clock">
+	<img class="clo-num" src="clo-img/0.png" alt=""/>
+	<img class="clo-num" src="clo-img/0.png" alt=""/>
+	<img class="clo-num" src="clo-img/0.png" alt=""/>
+	<img class="clo-num" src="clo-img/0.png" alt=""/>
+	<img class="clo-num" src="clo-img/0.png" alt=""/>
+	<img class="clo-num" src="clo-img/0.png" alt=""/>
+</div>
+<script>
+// 时钟代码
+function tick(){
+	//将单数字转换为双数字字符串，实现空位补零
+	function toDou(n){
+		if(n<10){
+			return '0'+n;
+		}else{
+			return ''+n;
+		}
+	}
+	//通过时间对象获取当前时间并连接成字符串
+	var oDate = new Date();
+	var str = toDou(oDate.getHours()) + toDou(oDate.getMinutes()) + toDou(oDate.getSeconds());
+	//实时变更时间图片标签
+	var aTimImg = document.getElementsByClassName("clo-num");
+	for(var i=0; i<aTimImg.length ; i++){
+		aTimImg[i].src = "clo-img/"+ str.charAt(i) + '.png';
+	}
+}
+setInterval(tick,1000);
+tick();
+
+
+var par = document.getElementById("clock").childNodes;
+for(var i=0;i<par.length;i++){
+	console.log(par[i].nodeType);
+}
+
+
+
+
+//弹出层代码
+	function dialog(){
+//获取页面的高度和宽度
+		var sWidth = document.body.scrollWidth ||document.documentElement.scrollWidth;
+		var sHeight = document.body.scrollHeight ||document.documentElement.scrollHeight;
+//获取页面可视区域的高度和宽度
+		var wHeight=document.documentElement.clientHeight || document.body.clientHeight;
+		var wWidth=document.documentElement.clientWidth || document.body.clientWidth;
+//创建遮罩层
+		var oMask = document.createElement("div");
+		oMask.id="mask";
+		oMask.style.height=sHeight+"px";
+    	oMask.style.width=sWidth+"px";
+    	document.body.appendChild(oMask); //添加到body末尾
+//创建登录框
+		var oLogin= document.createElement("div");
+		oLogin.id="login";
+		oLogin.innerHTML="<div id='close'>点击关闭</div>";
+		document.body.appendChild(oLogin);
+//获取登陆框的宽和高
+    var dHeight=oLogin.offsetHeight;
+    var dWidth=oLogin.offsetWidth;
+//设置登陆框的left和top
+    oLogin.style.left=sWidth/2-dWidth/2+"px";
+    oLogin.style.top=wHeight/2-dHeight/2+"px";
+//获取关闭按钮
+    var oClose=document.getElementById("close");
+    console.log(oClose);
+    //点击关闭按钮和点击登陆框以外的区域都可以关闭登陆框
+    oClose.onclick=oMask.onclick=function(){
+        document.body.removeChild(oLogin);
+        document.body.removeChild(oMask);
+	}
+}
+// window.onload=function(){
+//     var oBtn=document.getElementById("btnLogin");
+//     //点击登录按钮
+//     oBtn.onclick=function(){
+//         dialog();
+//     }
+// 	}
+</script>
+   
+    <div>
+	<h4>This is dev branch</h4>
+	<h5>fix branch</h5>
+        <select class='prov' id='prov' onchange='changeCity();'>
+            <option value=''>--请选择省--</option>
+        </select>
+        <select class='city' id='city'>
+            <option value=''>--请选择市--</option>
+        </select>
+    </div>
+<script>
+//级联下拉框
+	var province = document.getElementById("prov");
+	var city = document.getElementById("city");
+	var arr_prov = new Array(new Option("-请选择省份-"," "),new Option("福建","fj"),new Option("湖南","hn"));
+	var arr_city = new Array();
+	arr_city[0] = new Array(new Option("-请选择市区-"," "));
+	arr_city[1] = new Array(new Option("南平市","np"),new Option("福州市","fz"),new Option("厦门市","xm"));
+	arr_city[2] = new Array(new Option("长沙","cs"),new Option("永州","yz"));
+	function load(){
+		for(var i=0;i<arr_prov.length;i++){
+			province.options[i] = arr_prov[i]; 
+		}
+	}
+	function changeCity(){
+		city.options.length = 0;
+		var index = province.selectedIndex;
+		for(var i=0;i<arr_city[index].length;i++){
+			city.options[i] = arr_city[index][i];
+		}
+	}
+
+</script>
+
+
+
+</div>
+</body>
+</html>
